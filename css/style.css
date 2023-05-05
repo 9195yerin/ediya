@@ -1,0 +1,1473 @@
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap");
+/* font-family: 'Nunito Sans', sans-serif; */
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 100;
+  src: url(../font/NotoSansKR-Thin.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 300;
+  src: url(../font/NotoSansKR-Light.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../font/NotoSansKR-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../font/NotoSansKR-Medium.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../font/NotoSansKR-Bold.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 900;
+  src: url(../font/NotoSansKR-Black.woff) format("woff");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  color: #464646;
+  letter-spacing: 0.1px;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+  line-height: 0;
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 4rem;
+  text-transform: uppercase;
+}
+h2 {
+  font-size: 2.4rem;
+  line-height: 2.4rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+h3 {
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  font-weight: 400;
+}
+h4 {
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+}
+h5 {
+  font-size: 0.7rem;
+  line-height: 0.7rem;
+}
+button {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding: 10px 30px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: crimson;
+  color: white;
+}
+
+/* section, article common*/
+.blind {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -999rem;
+  overflow: hidden;
+}
+
+/* header */
+header {
+  width: 100%;
+  height: 170px;
+  background-color: #fff;
+  position: relative;
+}
+.top-nav {
+  width: 100%;
+  height: 50px;
+  background-color: #243c84;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* header 고정 */
+.top-fixed {
+  height: 120px;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #d9d9d9;
+  z-index: 1;
+}
+.top-fixed .top-nav {
+  display: none;
+}
+.top-fixed .top-logo {
+  top: 30px;
+}
+
+/* top-menu (tab) */
+.top-menu li {
+  float: left;
+  text-align: center;
+}
+.top-menu li a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #fff;
+  display: block;
+  padding: 17px 20px; /* 위,아래 20px->17px 'Noto Sans KR'만의 line-height값이 있기 때문에 (글씨의 자동 높이 때문에 높이만 2~3px줄이기) */
+  position: relative;
+}
+.top-menu li a::before {
+  content: "";
+  width: 1px;
+  height: 10px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: -2px;
+  transform: translateY(-50%);
+}
+.top-menu li.on {
+  background-color: #fff;
+  padding: 0 2px; /* ::before로 만든 선을 숨기기 위해서 */
+}
+.top-menu li.on a {
+  color: #243c84;
+}
+
+/* top-menu (sns, search) */
+.top-menu-right {
+  display: flex;
+}
+.top-sns {
+  display: flex;
+  margin-top: 14px;
+}
+.top-sns > li {
+  width: 22px;
+  height: 22px;
+  margin: 0 5px 0 0;
+}
+.top-sns > li:nth-child(1) {
+  background: url("https://www.ediya.com/images/common/top_sns01.png") no-repeat;
+  background-size: cover;
+}
+.top-sns > li:nth-child(2) {
+  background: url("https://www.ediya.com/images/common/top_sns02.png") no-repeat;
+  background-size: cover;
+}
+.top-sns > li:nth-child(3) {
+  background: url("https://www.ediya.com/images/common/top_sns03.png") no-repeat;
+  background-size: cover;
+}
+.top-sns > li:nth-child(4) {
+  background: url("https://www.ediya.com/images/common/top_sns04.png") no-repeat;
+  background-size: cover;
+}
+.top-search {
+  position: relative;
+  margin: 10px 30px 0 15px; /* 15px+.top-sns>li 5px=20px */
+}
+.top-search input {
+  width: 162px;
+  height: 30px;
+}
+.top-search span {
+  background: url("https://www.ediya.com/images/common/icon_search.gif")
+    no-repeat;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 12px;
+  top: 7px;
+  cursor: pointer;
+}
+
+/* top-logo */
+.top-logo {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.top-logo img {
+  width: auto;
+  height: 20px;
+}
+
+/* gnb */
+.gnb-nav {
+  width: 100%;
+  position: relative;
+  z-index: 999;
+}
+.gnb-nav::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0;
+  background-color: #fff;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  z-index: -1;
+  transition: 0.3s;
+  opacity: 0;
+}
+.gnb-nav:hover::after {
+  height: 230px;
+  opacity: 1;
+  border-bottom: 2px solid #555;
+}
+.gnb-main {
+  position: absolute;
+  top: 80px;
+  left: 50%; /* 중앙 정렬(유동적) */
+  margin-left: -520px; /* li전체 사이즈의 반(고정값) */
+}
+.gnb-main > li {
+  float: left;
+}
+.gnb-main > li > a {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  display: block;
+  color: #202023;
+  padding: 0 44px;
+}
+.gnb-main > li > a > span::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 4px;
+  background-color: #000;
+  margin: 3px auto; /* auto: before, after 따로 사용하지 않아도 중심에서부터 시작할 수 있도록(기본값은 왼쪽에서부터 시작) */
+  transition: 0.2s;
+}
+.gnb-main > li:hover a > span::after {
+  width: 100%;
+}
+.gnb-sub {
+  padding-left: 40px;
+  margin-top: 20px;
+  opacity: 0;
+  display: none;
+  transition: 0.2s;
+}
+.gnb-nav:hover .gnb-sub {
+  opacity: 1;
+  display: block;
+}
+.gnb-sub > li > a {
+  font-size: 0.813rem; /*13px*/
+  color: #848484;
+  line-height: 1.875rem;
+}
+.gnb-sub > li > a:hover {
+  color: #000;
+}
+
+/* side-menu */
+.nav-btn {
+  display: none;
+}
+
+/* main */
+main {
+  position: relative; /* .main-prev,next의 기준 */
+  max-width: 1920px; /* ediya 사이트 특징: img의 width값 px로 고정 */
+  height: 620px;
+  margin: 0 auto; /* 중앙 정렬*/
+}
+.main-slide {
+  width: 100%; /* 브라우저 너비 100% */
+  height: 620px;
+  position: relative;
+  overflow: hidden;
+}
+.img-panel {
+  width: 600%; /* 이미지 갯수에 따라서 *n */
+}
+.img-panel-tablet {
+  /* media query */
+  width: 600%;
+  display: none;
+}
+.img-panel-mobile {
+  /* media query */
+  width: 600%;
+  display: none;
+}
+.img-panel > li,
+.img-panel-tablet > li,
+.img-panel-mobile > li {
+  width: 16.6667%; /* 부모사이즈(100%) / 이미지 갯수(6개) */
+  float: left;
+}
+.img-panel > li > img,
+.img-panel-tablet > li > img,
+.img-panel-mobile > li > img {
+  width: 100%;
+  height: 620px;
+  object-fit: cover;
+}
+.main-indi {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+}
+.main-indi > li {
+  width: 11px;
+  height: 11px;
+  background-color: #fff;
+  border-radius: 50%;
+  float: left;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.main-indi > li.main-indi-on {
+  background-color: #243c84;
+}
+.main-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  cursor: pointer;
+}
+.main-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  cursor: pointer;
+}
+
+/* popup */
+.popup {
+  position: fixed;
+  top: 171px;
+  right: 185px;
+  cursor: pointer;
+  z-index: 999;
+}
+.popup-img {
+  width: 200px;
+}
+.popup-btn {
+  position: absolute;
+  top: 0;
+  width: 20px;
+  margin-left: 12px;
+}
+
+/* section 1 */
+.section-1 {
+  width: 100%;
+  height: 725px;
+  background: url("https://www.ediya.com/images/main/main_beanist_bg.gif")
+    no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+  position: relative;
+  overflow: hidden;
+}
+.section1-cont1 > h2 {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 2.625rem; /*42px*/
+  font-weight: 100;
+  color: #3c3c3c;
+  text-align: center;
+  padding-top: 115px;
+}
+.section1-cont1 > h2 > span {
+  font-weight: 900;
+  color: #90470c;
+}
+.section1-cont1 > h2:nth-child(2) {
+  display: none;
+}
+.section1-cont1 > h2::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 1px;
+  background-color: #3c3c3c;
+  margin: 50px auto 0;
+}
+.section1-cont1 > h3 {
+  font-size: 1.625rem; /*26px*/
+  text-align: center;
+  font-weight: 100;
+  color: #3c3c3c;
+  margin: 50px 0 65px 0;
+}
+.section1-cont1 > h3 > span {
+  font-weight: 500;
+}
+
+/* section1-img slide */
+.section1-slide {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.section1-slide-panel > ul {
+  width: 300%;
+  display: inline-block;
+}
+.section1-slide-panel > ul > li {
+  width: 33.333333%;
+  float: left;
+}
+.section1-slide-panel > ul > li > ul {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.section1-slide-panel > ul > li > ul > li {
+  float: left;
+  margin: 0 auto;
+}
+.section1-slide-panel > ul > li:first-child li {
+  margin: 0 32px;
+}
+.section1-slide-panel > ul > li:nth-child(2) li {
+  margin: 0 7px;
+}
+.section1-slide-panel > ul > li:last-child li {
+  margin: 0 30px;
+}
+.section1-slide img {
+  max-width: 200px;
+}
+.section1-slide dl {
+  margin-top: 20px;
+}
+.section1-slide dt {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #693a13;
+}
+.section1-slide dt:nth-child(2) {
+  display: none;
+}
+.section1-slide dd {
+  font-size: 0.938rem;
+  color: #cc8e5d;
+  line-height: 1.7rem;
+  text-transform: capitalize;
+}
+.section1-indi {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+}
+.section1-indi > ul > li {
+  width: 11px;
+  height: 11px;
+  background-color: #fff;
+  border-radius: 50%;
+  float: left;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.section1-indi > ul > li.section1-indi-on {
+  background-color: #90470c;
+}
+
+/* section 2 */
+.section-2 {
+  width: 100%;
+  background: url("https://www.ediya.com/images/main/dream_factory_bg.gif")
+    repeat-y;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+.section2-cont {
+  width: 1180px;
+  margin: 0 auto 50px;
+}
+.section2-cont h2 {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.875rem; /*30px*/
+  font-weight: 900;
+  color: #fff;
+  padding-top: 90px;
+  line-height: 2rem;
+}
+.section2-cont > h2 > span {
+  width: 1036px;
+  height: 87px;
+  background: url("https://www.ediya.com/images/main/dream_factory_txt.png")
+    no-repeat;
+  background-size: cover;
+  display: block;
+  margin-bottom: 10px;
+}
+.section2-cont h4 {
+  font-size: 1.063rem; /*17px*/
+  color: #fff;
+  padding-top: 7px;
+  font-weight: 400;
+  line-height: 1.4rem;
+}
+.section2-btn {
+  margin: 36px auto;
+}
+.section2-btn a {
+  color: #fff;
+  display: inline-block;
+  width: 188px;
+  height: 44px;
+  line-height: 42px;
+  text-align: center;
+  font-size: 0.938rem; /*15px*/
+  font-weight: 500;
+  border: 1px solid white;
+  margin: 0 3px 0 4px;
+}
+.section2-btn a:hover {
+  background-color: #fff;
+  color: #3c3c3c;
+}
+.section2-img {
+  margin-top: -310px;
+}
+.section2-img img {
+  float: right;
+  margin-right: -162px;
+}
+
+/* section 3 */
+.section-3 {
+  width: 100%;
+  height: 500px;
+  background: url("https://www.ediya.com/images/main/block02_bg.jpg");
+  background-size: cover;
+  background-position: center bottom;
+  text-align: center;
+}
+.section-3 h2 {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 2.625rem; /*42px*/
+  font-weight: 100;
+  color: #fff;
+  padding-top: 112px;
+}
+.section-3 h2:nth-child(2) {
+  display: none;
+}
+.section-3 h2 span {
+  font-weight: 900;
+}
+.section-3 h2::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 1px;
+  background-color: #fff;
+  margin: 51px auto 0;
+}
+.section-3 h3 {
+  font-family: "나눔스퀘어";
+  font-size: 1.625rem; /*26px*/
+  font-weight: 100;
+  color: #fff;
+  margin: 50px 0;
+}
+.section-3 a {
+  color: #fff;
+  display: inline-block;
+  width: 188px;
+  height: 44px;
+  line-height: 42px;
+  font-size: 0.938rem; /*15px*/
+  font-weight: 500;
+  border: 1px solid white;
+}
+.section-3 a:hover {
+  background-color: #fff;
+  color: #3c3c3c;
+}
+
+/* section 4 */
+.section-4 {
+  background: url("https://www.ediya.com/images/main/company_bg.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 54px;
+}
+.section4-cont {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.section4-cont > div {
+  float: right;
+}
+.section4-cont h2 {
+  color: #fff;
+  text-align: left;
+  padding-top: 87px;
+  font-size: 2.75rem; /*44px*/
+  font-weight: 100;
+  line-height: 3rem;
+  margin-bottom: 40px;
+}
+.section4-cont h4 {
+  color: #fff;
+  font-size: 1.063rem; /*17px*/
+  font-weight: 400;
+  line-height: 1.4rem;
+  margin-top: 55px;
+}
+.section4-cont h4:nth-child(2) {
+  display: none;
+}
+.section4-btn {
+  margin: 36px auto;
+  text-align: center;
+  color: #fff;
+  font-size: 0.938rem; /*15px*/
+  font-weight: bold;
+}
+.section4-btn a {
+  display: inline-block;
+  width: 188px;
+  min-width: 148px;
+  height: 44px;
+  padding: 0 20px;
+  border: 1px solid white;
+  margin: 0 3px 0 4px;
+  line-height: 42px;
+}
+.section4-btn a:hover {
+  background-color: #fff;
+  color: #3c3c3c;
+}
+
+/* section 5 */
+/* 가맹점개설안내, 매장찾기 */
+.section-5 {
+  width: 100%;
+  position: relative;
+}
+.section-5 > div:first-child {
+  width: 1200px;
+  margin: 100px auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+.section5-cont1 {
+  background: url("https://www.ediya.com/images/main/main_franchise_bg.jpg");
+  width: 350px;
+  height: 350px;
+  background-size: cover;
+  color: #fff;
+  padding: 44px 35px 0;
+  font-weight: 200;
+}
+.section5-cont1 > h3,
+.section5-cont2 > h3 {
+  font-family: "나눔스퀘어";
+  font-size: 1.375rem; /*22px*/
+  font-weight: 600;
+}
+.section5-cont1 > h3::after,
+.section5-cont2 > h3::after {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 1px;
+  background: #fff;
+  margin-top: 23px;
+}
+.section5-cont1 > h4,
+.section5-cont2 > h4 {
+  font-family: "나눔스퀘어";
+  font-size: 1.063rem; /*17px*/
+  font-weight: 500;
+  line-height: 1.4rem;
+  margin-top: 27px;
+}
+.section5-cont2 {
+  background: url("https://www.ediya.com/images/main/main_store_bg.jpg");
+  width: 350px;
+  height: 350px;
+  background-size: cover;
+  color: #fff;
+  padding: 44px 35px 0;
+  font-weight: 200;
+}
+.section5-cont2 > form {
+  margin-top: 35px;
+  position: relative;
+}
+.section5-cont2 > form > input {
+  width: 100%;
+  max-width: 320px;
+  height: 44px;
+  border: 3px solid #fff;
+  background-color: #1c3269;
+  padding-left: 20px;
+}
+.section5-cont2 > form > input::placeholder {
+  color: #fff;
+  font-size: 0.875rem; /*14px*/
+  font-weight: 500;
+}
+.section5-cont2 > form > a {
+  position: absolute;
+  right: 5px;
+}
+
+/* 이디야소식, 브로슈어 */
+.section5-cont3 {
+  width: 460px;
+  height: 330px;
+}
+.section5-notice {
+  height: 207px;
+  margin: 8px 0 0 20px;
+}
+.section5-notice h3 {
+  font-family: "나눔스퀘어";
+  font-size: 1.375rem; /*22px*/
+  font-weight: 600;
+  color: #202023;
+}
+.notice-btn {
+  float: right;
+  margin-top: -17px;
+}
+.notice-cont {
+  margin-top: 21px;
+}
+.notice-cont > li > a {
+  color: #7d7d7e;
+  font-size: 0.938rem; /*15px*/
+  line-height: 1.7rem;
+}
+.notice-cont > li > a:hover {
+  color: #202023;
+}
+.notice-cont > li > span {
+  float: right;
+  font-size: 0.813rem;
+  color: #a4a4a5;
+  margin-top: 6px;
+}
+.section5-broc {
+  height: 135px;
+  background: #cdc3b2;
+  position: relative;
+}
+.section5-broc > h3 {
+  color: #fff;
+  padding: 36px 0 24px 0;
+  margin-left: 7%;
+  font-family: "나눔스퀘어";
+  font-size: 1.375rem; /*22px*/
+  font-weight: 600;
+  line-height: 1.1rem;
+  background: url("https://www.ediya.com/images/main/main_brochure_arrow.png")
+    no-repeat;
+  background-position: bottom left;
+  background-size: 6%;
+}
+.section5-broc img {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+}
+.section5-bg {
+  width: 100%;
+  height: 600px;
+  margin: 0 auto;
+  background-color: #efefef;
+  position: absolute;
+  bottom: 50px;
+  z-index: -1;
+}
+
+/* footer */
+footer {
+  width: 100%;
+  background-color: #262626;
+  text-align: center;
+}
+footer > div {
+  border-bottom: 1px solid #464646;
+}
+
+/* footer top */
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+  position: relative;
+}
+.footer-top > ul > li {
+  display: inline-block;
+  margin: 3px 19px;
+  font-size: 0.813rem; /*13px*/
+  color: #818181;
+}
+.footer-top > ul > li:nth-child(2) a {
+  color: #fff;
+  font-weight: 400;
+}
+.footer-lang {
+  float: right;
+  margin-top: -25px;
+  background-color: #fff;
+}
+.footer-lang > select {
+  width: 168px;
+  height: 28px;
+  line-height: 28px;
+  appearance: none;
+  background: url("../image/footer/language_arrow.gif") no-repeat 135px 10px;
+  padding-left: 20px;
+  font-size: 0.813rem; /*13px*/
+  color: #848484;
+  border: 1px solid #d9d9d9;
+  text-align: left;
+}
+
+/* footer bottom */
+.footer-bottom {
+  max-width: 1200px;
+  position: relative;
+  margin: 0 auto;
+}
+.footer-logo {
+  margin: 41px 0 24px;
+}
+.footer-info {
+  width: 90%;
+  max-width: 650px;
+  margin: 0 auto;
+  margin-bottom: 14px;
+  font-size: 0.75rem; /*12px*/
+  line-height: 1.3rem;
+  color: #6c6c6c;
+}
+.footer-info > span {
+  background: url("https://www.ediya.com/images/common/footer_line.gif")
+    no-repeat;
+  background-position: right;
+  margin-right: 10px;
+  padding-right: 10px;
+}
+.footer-copy {
+  padding-bottom: 35px;
+  font-size: 0.75rem;
+  color: #6c6c6c;
+}
+.footer-ccm {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* tablet */
+@media screen and (max-width: 1180px) and (min-width: 641px) {
+  /* main img */
+  .img-panel {
+    display: none;
+  }
+  .img-panel-tablet {
+    display: block;
+  }
+  .img-panel-mobile {
+    display: none;
+  }
+  main {
+    max-width: 1180px;
+  }
+
+  /* top-menu */
+  .top-nav {
+    height: 30px;
+  }
+  .top-menu-right {
+    display: none;
+  }
+  .top-menu {
+    width: 100%;
+  }
+  .top-menu li {
+    width: 33.33333%;
+  }
+  .top-menu li a {
+    padding: 7px 0;
+  }
+  header {
+    height: 90px;
+  }
+  .top-logo {
+    top: 50px;
+    left: 10px;
+    transform: translateX(0);
+  }
+  .gnb-nav {
+    display: none;
+  }
+  .nav-btn {
+    display: block;
+    position: relative;
+  }
+  .nav-btn > span {
+    background: url("https://www.ediya.com/images/common/m_nav_btn.gif");
+    width: 26px;
+    height: 22px;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    cursor: pointer;
+  }
+  .top-fixed {
+    height: 60px;
+  }
+  .top-fixed .top-logo {
+    top: 20px;
+  }
+
+  /* section 1 */
+  .section-1 {
+    height: 610px;
+  }
+  .section1-cont1 > h2:first-child {
+    display: none;
+  }
+  .section1-cont1 > h2:nth-child(2) {
+    display: block;
+    margin-top: -60px;
+    font-size: 2rem; /*32px*/
+  }
+  .section1-cont1 > h2::after {
+    display: none;
+  }
+  .section1-cont1 > h3 {
+    font-size: 1.25rem; /*20px*/
+    margin-top: 20px;
+  }
+  .section1-cont1 > h3 span:last-child {
+    font-weight: 100;
+  }
+  .section1-slide-panel > ul > li:first-child img {
+    max-width: 270px;
+    padding-top: 30px;
+  }
+  .section1-slide-panel > ul > li:nth-child(2) img {
+    max-width: 195px;
+    padding-top: 80px;
+  }
+  .section1-slide-panel > ul > li:last-child img {
+    max-width: 240px;
+    padding-top: 5px;
+  }
+
+  /* section 2 */
+  .section2-cont {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .section2-cont h2 {
+    font-weight: 100;
+    padding-top: 60px;
+  }
+  .section2-cont h2::before {
+    content: "DREAM FACTORY";
+    display: block;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 2rem; /*32px*/
+    font-weight: 900;
+    font-size: 2rem;
+  }
+  .section2-cont > h2 > span {
+    display: none;
+  }
+  .section2-cont h4 {
+    font-size: 1.063rem; /*17px*/
+  }
+  .section2-img {
+    margin: 0;
+  }
+  .section2-img img {
+    float: right;
+    width: 120%;
+    max-width: 1063px;
+    height: auto;
+    margin-right: -20%;
+  }
+
+  /* section 3 */
+  .section-3 {
+    width: 100%;
+    height: 600px;
+    background: url("https://www.ediya.com/images/main/block02_bg.jpg");
+    background-size: cover;
+    background-position: 40%;
+    text-align: center;
+  }
+  .section-3 > h2:first-child {
+    display: none;
+  }
+  .section-3 > h2:nth-child(2) {
+    display: block;
+    margin-top: -60px;
+    font-size: 2rem; /*32px*/
+  }
+  .section-3 > h2::after {
+    display: none;
+  }
+  .section-3 > h3 {
+    font-size: 1.25rem; /*20px*/
+    margin-top: 20px;
+  }
+
+  /* section 4 */
+  .section-4 {
+    background: url("https://www.ediya.com/images/main/company_bg_m.jpg");
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 200px;
+  }
+  .section4-cont > div {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .section4-cont > div > h2 {
+    text-align: center;
+    font-size: 1.75rem; /*28px*/
+    line-height: 2rem;
+    margin-top: -30px;
+  }
+  .section4-cont > div > h4 {
+    text-align: center;
+    font-size: 1.063rem; /*17px*/
+    margin-top: -15px;
+  }
+
+  /* section 5 */
+  .section-5 {
+    margin-top: -50px;
+  }
+  .section-5 > div:first-child {
+    display: inline-block;
+    width: 100%;
+  }
+  .section5-cont1 {
+    width: 100%;
+    height: 153px;
+    background: url("https://www.ediya.com/images/main/main_franchise_bg.jpg")
+      no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 30px 35px 0;
+  }
+  .section5-cont2 {
+    width: 100%;
+    height: 177px;
+    background: url("https://www.ediya.com/images/main/main_store_bg.jpg")
+      no-repeat #233e83;
+    background-position: right top;
+    padding: 30px 35px 0;
+  }
+  .section5-cont2 h4 {
+    display: none;
+  }
+  .section5-cont2 form {
+    max-width: 320px;
+    height: 44px;
+  }
+  .section5-cont3 {
+    width: 100%;
+  }
+  .section5-notice {
+    margin: 40px 7% 0 7%;
+  }
+  .section-5 > div:last-child {
+    display: none;
+  }
+  .section5-broc > h3 {
+    background: url("https://www.ediya.com/images/main/main_brochure_arrow.png")
+      no-repeat;
+    background-position: bottom left;
+    background-size: 3%;
+  }
+
+  /* footer */
+  footer {
+    max-width: 1180px;
+  }
+  .footer-top {
+    width: 100%;
+    position: relative;
+  }
+  .footer-lang {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 240px;
+  }
+  .footer-ccm {
+    margin-top: -190px;
+    width: 100%;
+  }
+  .footer-logo {
+    margin-top: 210px;
+  }
+  .footer-info {
+    margin-top: -10px;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 640px) {
+  /* main img */
+  .img-panel {
+    display: none;
+  }
+  .img-panel-tablet {
+    display: none;
+  }
+  .img-panel-mobile {
+    display: block;
+  }
+  main {
+    max-width: 640px;
+  }
+
+  /* top-menu */
+  .top-nav {
+    height: 30px;
+  }
+  .top-menu-right {
+    display: none;
+  }
+  .top-menu {
+    width: 100%;
+  }
+  .top-menu li {
+    width: 33.33333%;
+  }
+  .top-menu li a {
+    padding: 7px 0;
+  }
+  header {
+    height: 90px;
+  }
+  .top-logo {
+    top: 50px;
+    left: 10px;
+    transform: translateX(0);
+  }
+  .gnb-nav {
+    display: none;
+  }
+  .nav-btn {
+    display: block;
+    position: relative;
+  }
+  .nav-btn > span {
+    background: url("https://www.ediya.com/images/common/m_nav_btn.gif");
+    width: 26px;
+    height: 22px;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    cursor: pointer;
+  }
+  .top-fixed {
+    height: 60px;
+  }
+  .top-fixed .top-logo {
+    top: 20px;
+  }
+
+  /* section1 */
+  .section-1 {
+    height: 490px;
+  }
+  .section1-cont1 > h2:first-child {
+    display: none;
+  }
+  .section1-cont1 > h2:nth-child(2) {
+    display: block;
+    margin-top: -60px;
+    font-size: 2rem; /*32px*/
+  }
+  .section1-cont1 > h2::after {
+    display: none;
+  }
+  .section1-cont1 > h3 {
+    font-size: 1.25rem; /*20px*/
+    line-height: 1.6rem;
+    margin-top: 20px;
+  }
+  .section1-cont1 > h3 span:last-child {
+    font-weight: 100;
+  }
+  .section1-slide-panel > ul > li > ul {
+    height: 200px;
+    margin-top: -30px;
+  }
+  .section1-slide-panel > ul > li:first-child li {
+    margin: 0 10px;
+  }
+  .section1-slide-panel > ul > li:nth-child(2) li {
+    margin: 0 10px;
+  }
+  .section1-slide-panel > ul > li:last-child li:first-child {
+    margin-left: -70px;
+  }
+  .section1-slide-panel > ul > li:last-child li:last-child {
+    margin-top: -200px;
+    margin-left: 100px;
+  }
+  .section1-slide-panel > ul > li:first-child img {
+    max-width: 140px;
+  }
+  .section1-slide-panel > ul > li:nth-child(2) img {
+    max-width: 100px;
+    padding-top: 30px;
+  }
+  .section1-slide-panel > ul > li:last-child img {
+    max-width: 140px;
+  }
+  .section1-slide dt:nth-child(1) {
+    display: none;
+  }
+  .section1-slide dt:nth-child(2) {
+    display: block;
+    text-align: center;
+    font-size: 0.813rem; /*13px*/
+    font-weight: 700;
+  }
+  .section1-slide-panel dd {
+    display: none;
+  }
+
+  /* section2 */
+  .section2-cont > h2 > span {
+    display: none;
+  }
+  .section2-cont {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .section2-cont h2 {
+    font-weight: 100;
+    padding-top: 60px;
+    line-height: 2.5rem;
+    display: block;
+  }
+  .section2-cont h2::before {
+    content: "DREAM FACTORY";
+    font-weight: 900;
+    font-size: 2rem; /*32px*/
+    display: block;
+  }
+  .section2-img {
+    margin: 0;
+  }
+  .section2-img img {
+    max-width: 1063px;
+    width: 120%;
+    margin-right: -20px;
+  }
+  .section2-btn {
+    width: 190px;
+  }
+  .section2-btn a {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  /* section3 */
+  .section-3 {
+    height: 600px;
+    background: url("https://www.ediya.com/images/main/block02_bg.jpg")
+      no-repeat;
+    background-position: 30%;
+    background-size: cover;
+  }
+  .section-3 > h2:first-child {
+    display: none;
+  }
+  .section-3 > h2:nth-child(2) {
+    display: block;
+    margin-top: -60px;
+    font-size: 2rem; /*32px*/
+  }
+  .section-3 h2::after {
+    display: none;
+  }
+  .section-3 > h3 {
+    font-size: 1.25rem; /*20px*/
+    margin-top: 20px;
+  }
+
+  /* section4 */
+  .section-4 {
+    height: 610px;
+    background: url("https://www.ediya.com/images/main/company_bg_m.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  .section4-cont > div {
+    float: none;
+    width: 440px;
+    margin: 0 auto;
+  }
+  .section4-cont h2 {
+    text-align: center;
+    font-size: 1.75rem; /*28px*/
+    line-height: 2rem;
+    padding-top: 60px;
+  }
+  .section4-cont > div > h4:nth-child(2) {
+    display: none;
+  }
+  .section4-cont h4:nth-child(3) {
+    display: block;
+    text-align: center;
+    font-size: 1.063rem; /*17px*/
+    line-height: 1.4rem;
+    margin-top: -20px;
+  }
+  .section4-btn {
+    padding: 0 4%; /* 브라우저의 100%를 차지하면서 여백을 만듬 */
+  }
+  .section4-btn a {
+    display: block;
+    width: 400px;
+    height: 42px;
+    margin-bottom: 8px;
+    padding: 0 20px;
+  }
+
+  /* section 5 */
+  .section-5 {
+    margin-top: -50px;
+  }
+  .section-5 > div:first-child {
+    display: inline-block;
+    width: 100%;
+  }
+  .section5-cont1 {
+    width: 100%;
+    height: 153px;
+    background: url("https://www.ediya.com/images/main/main_franchise_bg.jpg")
+      no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 30px 35px 0;
+  }
+  .section5-cont2 {
+    width: 100%;
+    height: 177px;
+    background: url("https://www.ediya.com/images/main/main_store_bg.jpg")
+      no-repeat #233e83;
+    background-position: right top;
+    padding: 30px 35px 0;
+  }
+  .section5-cont2 h4 {
+    display: none;
+  }
+  .section5-cont2 form {
+    max-width: 320px;
+    height: 44px;
+  }
+  .section5-cont3 {
+    width: 100%;
+  }
+  .section5-notice {
+    height: 170px;
+    margin: 40px 7% 0 7%;
+  }
+  .section-5 > div:last-child {
+    display: none;
+  }
+  .section5-broc > img {
+    width: 130px;
+    height: 122px;
+  }
+  .section5-broc > h3 {
+    background: url("https://www.ediya.com/images/main/main_brochure_arrow.png")
+      no-repeat;
+    background-position: bottom left;
+  }
+
+  /* footer */
+  footer {
+    max-width: 1180px;
+    margin-top: -25px;
+  }
+  .footer-top {
+    width: 100%;
+    position: relative;
+    font-size: 0.813rem;
+  }
+  .footer-lang {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 250px;
+  }
+  .footer-ccm {
+    margin-top: -180px;
+    width: 100%;
+  }
+  .footer-logo {
+    margin-top: 200px;
+  }
+}

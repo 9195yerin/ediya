@@ -1,0 +1,1049 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap");
+/* font-family: 'Nunito Sans', sans-serif; */
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 100;
+  src: url(../font/NotoSansKR-Thin.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 300;
+  src: url(../font/NotoSansKR-Light.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../font/NotoSansKR-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../font/NotoSansKR-Medium.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../font/NotoSansKR-Bold.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 900;
+  src: url(../font/NotoSansKR-Black.woff) format("woff");
+}
+@font-face {
+  font-family: "Arial Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Arial Bold"), url("../font/ARIALBD.TTF.woff") format("woff");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+  line-height: 0;
+}
+
+/* section common*/
+.blind {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -999rem;
+  overflow: hidden;
+}
+
+/* header */
+header {
+  width: 100%;
+  height: 170px;
+  background-color: #fff;
+  position: relative;
+}
+.top-nav {
+  width: 100%;
+  height: 50px;
+  background-color: #243c84;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* header 고정 */
+.top-fixed {
+  height: 120px;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #d9d9d9;
+  z-index: 1;
+}
+.top-fixed .top-nav {
+  display: none;
+}
+.top-fixed .top-logo {
+  top: 30px;
+}
+
+/* top-menu (tab) */
+.top-menu li {
+  float: left;
+  text-align: center;
+}
+.top-menu li a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #fff;
+  display: block;
+  padding: 17px 20px; /* 위,아래 20px->17px 'Noto Sans KR'만의 line-height값이 있기 때문에 (글씨의 자동 높이 때문에 높이만 2~3px줄이기) */
+  position: relative;
+}
+.top-menu li a::before {
+  content: "";
+  width: 1px;
+  height: 10px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: -2px;
+  transform: translateY(-50%);
+}
+.top-menu li.on {
+  background-color: #fff;
+  padding: 0 2px; /* ::before로 만든 선을 숨기기 위해서 */
+}
+.top-menu li.on a {
+  color: #243c84;
+}
+
+/* top-menu (sns, search) */
+.top-menu-right {
+  display: flex;
+}
+.top-sns {
+  display: flex;
+  margin-top: 14px;
+}
+.top-sns > li {
+  width: 22px;
+  height: 22px;
+  margin: 0 5px 0 0;
+}
+.top-sns > li:nth-child(1) {
+  background: url("https://www.ediya.com/images/common/top_sns01.png") no-repeat;
+  background-size: cover;
+}
+.top-sns > li:nth-child(2) {
+  background: url("https://www.ediya.com/images/common/top_sns02.png") no-repeat;
+  background-size: cover;
+}
+.top-sns > li:nth-child(3) {
+  background: url("https://www.ediya.com/images/common/top_sns03.png") no-repeat;
+  background-size: cover;
+}
+.top-sns > li:nth-child(4) {
+  background: url("https://www.ediya.com/images/common/top_sns04.png") no-repeat;
+  background-size: cover;
+}
+.top-search {
+  position: relative;
+  margin: 10px 30px 0 15px; /* 15px+.top-sns>li 5px=20px */
+}
+.top-search input {
+  width: 162px;
+  height: 30px;
+}
+.top-search span {
+  background: url("https://www.ediya.com/images/common/icon_search.gif")
+    no-repeat;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 12px;
+  top: 7px;
+  cursor: pointer;
+}
+
+/* top-logo */
+.top-logo {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.top-logo img {
+  width: auto;
+  height: 20px;
+}
+
+/* gnb */
+.gnb-nav {
+  width: 100%;
+  position: relative;
+  z-index: 999;
+}
+.gnb-nav::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0;
+  background-color: #fff;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  z-index: -1;
+  transition: 0.3s;
+  opacity: 0;
+}
+.gnb-nav:hover::after {
+  height: 230px;
+  opacity: 1;
+  border-bottom: 2px solid #555;
+}
+.gnb-main {
+  position: absolute;
+  top: 80px;
+  left: 50%; /* 중앙 정렬(유동적) */
+  margin-left: -520px; /* li전체 사이즈의 반(고정값) */
+}
+.gnb-main > li {
+  float: left;
+}
+.gnb-main > li > a {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  display: block;
+  color: #202023;
+  padding: 0 44px;
+}
+.gnb-main > li > a > span::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 4px;
+  background-color: #000;
+  margin: 3px auto; /* auto: before, after 따로 사용하지 않아도 중심에서부터 시작할 수 있도록(기본값은 왼쪽에서부터 시작) */
+  transition: 0.2s;
+}
+.gnb-main > li:hover a > span::after {
+  width: 100%;
+}
+.gnb-sub {
+  padding-left: 40px;
+  margin-top: 20px;
+  opacity: 0;
+  display: none;
+  transition: 0.2s;
+}
+.gnb-nav:hover .gnb-sub {
+  opacity: 1;
+  display: block;
+}
+.gnb-sub > li > a {
+  font-size: 0.813rem; /*13px*/
+  color: #848484;
+  line-height: 1.875rem;
+}
+.gnb-sub > li > a:hover {
+  color: #000;
+}
+
+/* side-menu */
+.nav-btn {
+  display: none;
+}
+
+/* section1 */
+section {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 150px;
+  padding-bottom: 250px;
+}
+.section1 {
+  width: 670px;
+  margin: 0 auto;
+}
+.section1 > p {
+  font-size: 3.625rem; /*43pt-58px*/
+  font-family: "Arial Bold";
+}
+
+/* signup-top */
+.signup-top > div:first-child {
+  position: relative;
+}
+.phonecheck {
+  width: 100%;
+  height: 65px;
+  margin-top: 100px;
+  padding-left: 150px;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  outline: none;
+}
+.signup-top > div > img {
+  float: left;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+}
+.signup-top > div > p {
+  float: left;
+  font-size: 1.125rem; /*13pt-18px*/
+  font-weight: 700;
+  position: absolute;
+  bottom: 15px;
+  left: 40px;
+}
+.signup-top > div > button {
+  float: right;
+  width: 177px;
+  height: 50px;
+  border: none;
+  background-color: #1d2088;
+  color: #fff;
+  font-size: 1.125rem; /*13pt-18px*/
+  font-weight: 700;
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  cursor: pointer;
+}
+.signup-top > div > button:hover {
+  background-color: #161861;
+}
+.signup-top > form {
+  margin-top: 30px;
+}
+.signup-top > form > p {
+  font-size: 1.25rem; /*15pt-20px*/
+  font-weight: 700;
+}
+.signup-top > form > div > input {
+  width: 100%;
+  height: 70px;
+  border: 1px solid #aaa;
+  padding-left: 40px;
+  padding-top: 8px;
+  margin-top: 15px;
+  outline: none;
+}
+.signup-top > form > div > input::placeholder {
+  font-size: 1.25rem; /*15pt-20px*/
+  font-weight: 400;
+  color: #d3d3d3;
+}
+.email {
+  margin-top: 20px;
+}
+.email > div {
+  font-size: 1.125rem; /*13pt-18px*/
+  font-weight: 400;
+  color: #8d8d8d;
+}
+.phone {
+  margin-top: 20px;
+  position: relative;
+}
+.phone > select {
+  float: left;
+  width: 200px;
+  height: 70px;
+  border: 1px solid #aaa;
+  padding-left: 40px;
+  margin-right: 35px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1.25rem; /*15pt-20px*/
+  font-weight: 400;
+  appearance: none;
+  background: url("../img/select.png") no-repeat 160px 25px;
+  background-size: 13px;
+  outline: none;
+}
+.phone > select > option {
+  font-size: 1.25rem; /*15pt-20px*/
+  font-weight: 400;
+}
+.phone > div > input {
+  float: left;
+  width: 200px;
+  height: 70px;
+  padding-left: 40px;
+  border: 1px solid #aaa;
+  outline: none;
+}
+.phone > div > input:first-child {
+  margin-right: 35px;
+}
+.phone > span::after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 2px;
+  background-color: #aaa;
+  position: absolute;
+  top: 35px;
+  left: 213px;
+}
+.phone > span:last-child::after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 2px;
+  background-color: #aaa;
+  position: absolute;
+  top: 35px;
+  left: 448px;
+}
+.birthday {
+  width: 100%;
+  display: inline-block;
+}
+.birthday > p {
+  font-size: 1.125rem; /*13pt-18px*/
+  font-weight: 400;
+  color: #8d8d8d;
+  margin: 10px 0;
+}
+.birthday-box > div {
+  display: inline-block;
+  margin-right: 45px;
+  position: relative;
+}
+.birthday-box > div:first-child input {
+  font-family: "Noto Sans KR", sans-serif;
+}
+.birthday-box > div:last-child {
+  margin-right: 0;
+}
+.birthday-box > div > input {
+  float: left;
+  width: 180px;
+  height: 70px;
+  border: 1px solid #aaa;
+  padding-left: 40px;
+  padding-top: 5px;
+  outline: none;
+}
+.birthday-box > div > p {
+  font-size: 1.25rem; /*15pt-20px*/
+  font-weight: 400;
+  position: absolute;
+  top: 20px;
+  left: 193px;
+}
+.birthday-box > div > input::placeholder {
+  font-size: 1.25rem; /*15pt-20px*/
+  font-weight: 400;
+  color: #d3d3d3;
+}
+.male {
+  margin-top: 20px;
+}
+.male > button {
+  width: 330px;
+  height: 70px;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  background-color: #eee;
+  color: #8d8d8d;
+  font-size: 1.25rem; /*15pt-20px*/
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+}
+.male > button:hover {
+  color: #464646;
+  font-weight: bold;
+}
+
+/* signup-bottom */
+.signup-bottom {
+  width: 100%;
+  margin-top: 60px;
+  font-size: 1.25rem; /*15pt-20px*/
+  font-weight: 400;
+  padding: 0 10px;
+}
+.signup-bottom > div {
+  display: inline-block;
+}
+.checkbox1 > input {
+  float: left;
+  width: 23px;
+  height: 23px;
+  margin-right: 15px;
+}
+.checkbox1 > p {
+  float: left;
+  margin-top: -4px;
+}
+.signup-bottom > div:nth-child(2) {
+  margin-top: 10px;
+}
+.signup-bottom > div:nth-child(3) {
+  margin-top: 20px;
+  color: #8d8d8d;
+}
+.signup-bottom > div:nth-child(4) {
+  margin-top: 40px;
+}
+.signup-bottom > div:nth-child(5) {
+  margin-top: 20px;
+  color: #8d8d8d;
+}
+.checkbox2 > div {
+  width: 100%;
+  display: inline-block;
+}
+.checkbox2 > div > input {
+  float: left;
+  width: 23px;
+  height: 23px;
+  margin-right: 15px;
+}
+.checkbox2 > div > p {
+  float: left;
+  margin-top: -4px;
+}
+.checkbox2 > div > span {
+  float: right;
+  text-decoration: underline;
+  margin-top: -10px;
+  cursor: pointer;
+}
+.signup-bottom > div:nth-child(6) {
+  margin-top: 40px;
+}
+.signup-bottom > div:nth-child(6) > p:last-child {
+  color: #08c5d8;
+}
+.signup-bottom > div:nth-child(7) {
+  margin-top: 20px;
+  width: 100%;
+  color: #8d8d8d;
+}
+.checkbox3 > div {
+  width: 100%;
+  display: inline-block;
+}
+.checkbox3 > div > input {
+  float: left;
+  width: 23px;
+  height: 23px;
+  margin-right: 15px;
+}
+.checkbox3 > div > p {
+  float: left;
+  margin-top: -5px;
+}
+.signup-bottom > button {
+  margin-top: 90px;
+  width: 650px;
+  height: 80px;
+  border: none;
+  background-color: #1d2088;
+  color: #fff;
+  font-size: 1.25rem; /*15pt-20px*/
+  font-weight: 400;
+  cursor: pointer;
+}
+.signup-bottom > button:hover {
+  background-color: #161861;
+}
+
+/* footer */
+footer {
+  width: 100%;
+  background-color: #262626;
+  text-align: center;
+}
+footer > div {
+  border-bottom: 1px solid #464646;
+}
+
+/* footer top */
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+  position: relative;
+}
+.footer-top > ul > li {
+  display: inline-block;
+  margin: 3px 19px;
+  font-size: 0.813rem; /*13px*/
+  color: #818181;
+}
+.footer-top > ul > li:nth-child(2) a {
+  color: #fff;
+  font-weight: 400;
+}
+.footer-lang {
+  float: right;
+  margin-top: -25px;
+  background-color: #fff;
+}
+.footer-lang > select {
+  width: 168px;
+  height: 28px;
+  line-height: 28px;
+  appearance: none;
+  background: url("../img/language_arrow.gif") no-repeat 135px 10px;
+  padding-left: 20px;
+  font-size: 0.813rem; /*13px*/
+  color: #848484;
+  border: 1px solid #d9d9d9;
+  text-align: left;
+}
+
+/* footer bottom */
+.footer-bottom {
+  max-width: 1200px;
+  position: relative;
+  margin: 0 auto;
+}
+.footer-logo {
+  margin: 41px 0 24px;
+}
+.footer-info {
+  width: 90%;
+  max-width: 650px;
+  margin: 0 auto;
+  margin-bottom: 14px;
+  font-size: 0.75rem; /*12px*/
+  line-height: 1.3rem;
+  color: #6c6c6c;
+}
+.footer-info > span {
+  background: url("https://www.ediya.com/images/common/footer_line.gif")
+    no-repeat;
+  background-position: right;
+  margin-right: 10px;
+  padding-right: 10px;
+}
+.footer-copy {
+  padding-bottom: 35px;
+  font-size: 0.75rem;
+  color: #6c6c6c;
+}
+.footer-ccm {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* tablet */
+@media screen and (max-width: 1180px) and (min-width: 641px) {
+  /* top-menu */
+  .top-nav {
+    height: 30px;
+  }
+  .top-menu-right {
+    display: none;
+  }
+  .top-menu {
+    width: 100%;
+  }
+  .top-menu li {
+    width: 33.33333%;
+  }
+  .top-menu li a {
+    padding: 7px 0;
+  }
+  header {
+    height: 90px;
+  }
+  .top-logo {
+    top: 50px;
+    left: 10px;
+    transform: translateX(0);
+  }
+  .gnb-nav {
+    display: none;
+  }
+  .nav-btn {
+    display: block;
+    position: relative;
+  }
+  .nav-btn > span {
+    background: url("https://www.ediya.com/images/common/m_nav_btn.gif");
+    width: 26px;
+    height: 22px;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    cursor: pointer;
+  }
+  .top-fixed {
+    height: 60px;
+  }
+  .top-fixed .top-logo {
+    top: 20px;
+  }
+
+  /* footer */
+  footer {
+    max-width: 1180px;
+  }
+  .footer-top {
+    width: 100%;
+    position: relative;
+  }
+  .footer-lang {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 240px;
+  }
+  .footer-ccm {
+    margin-top: -190px;
+    width: 100%;
+  }
+  .footer-logo {
+    margin-top: 210px;
+  }
+  .footer-info {
+    margin-top: -10px;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 640px) and (min-width: 360px) {
+  /* top-menu */
+  .top-nav {
+    height: 30px;
+  }
+  .top-menu-right {
+    display: none;
+  }
+  .top-menu {
+    width: 100%;
+  }
+  .top-menu li {
+    width: 33.33333%;
+  }
+  .top-menu li a {
+    padding: 7px 0;
+  }
+  header {
+    height: 90px;
+  }
+  .top-logo {
+    top: 50px;
+    left: 10px;
+    transform: translateX(0);
+  }
+  .gnb-nav {
+    display: none;
+  }
+  .nav-btn {
+    display: block;
+    position: relative;
+  }
+  .nav-btn > span {
+    background: url("https://www.ediya.com/images/common/m_nav_btn.gif");
+    width: 26px;
+    height: 22px;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    cursor: pointer;
+  }
+  .top-fixed {
+    height: 60px;
+  }
+  .top-fixed .top-logo {
+    top: 20px;
+  }
+
+  /* section1 */
+  section {
+    padding: 150px 10px 250px 10px;
+  }
+  .section1 {
+    width: 350px;
+  }
+
+  /* signup-top */
+  .phonecheck {
+    padding-left: 130px;
+  }
+  .signup-top > div > img {
+    bottom: 10px;
+  }
+  .signup-top > div > p {
+    font-size: 1rem; /*16px*/
+  }
+  .signup-top > div > button {
+    width: 110px;
+    font-size: 1rem; /*16px*/
+  }
+  .signup-top > form {
+    margin-top: 20px;
+  }
+  .signup-top > form > p {
+    font-size: 1.125rem; /*18px*/
+  }
+  .signup-top > form > div > input {
+    height: 50px;
+    padding-left: 5px;
+    padding-top: 2px;
+    margin-top: 10px;
+  }
+  .signup-top > form > div > input::placeholder {
+    font-size: 0.75rem; /*12px*/
+  }
+  .email {
+    margin-top: 10px;
+  }
+  .email > div {
+    font-size: 1rem; /*16px*/
+  }
+  .phone {
+    margin-top: 10px;
+  }
+  .phone > select {
+    float: left;
+    width: 96px;
+    height: 50px;
+    border: 1px solid #aaa;
+    padding-left: 15px;
+    margin-right: 20px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1rem; /*16px*/
+    font-weight: 400;
+    appearance: none;
+    background: url("../img/select.png") no-repeat 70px 18px;
+    background-size: 13px;
+    outline: none;
+  }
+  .phone > select > option {
+    font-size: 1rem; /*16px*/
+    font-weight: 400;
+  }
+  .phone > div > input {
+    float: left;
+    width: 96px;
+    height: 50px;
+    padding-left: 25px;
+    border: 1px solid #aaa;
+    outline: none;
+  }
+  .phone > div > input:first-child {
+    margin-right: 20px;
+  }
+  .phone > span::after {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 2px;
+    background-color: #aaa;
+    position: absolute;
+    top: 25px;
+    left: 102px;
+  }
+  .phone > span:last-child::after {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 2px;
+    background-color: #aaa;
+    position: absolute;
+    top: 25px;
+    left: 218px;
+  }
+  .birthday > p {
+    font-size: 1rem; /*16px*/
+  }
+  .birthday-box > div {
+    display: inline-block;
+    margin-right: 25px;
+    position: relative;
+  }
+  .birthday-box > div:first-child input {
+    font-family: "Noto Sans KR", sans-serif;
+  }
+  .birthday-box > div:last-child {
+    margin-right: 0;
+  }
+  .birthday-box > div > input {
+    float: left;
+    width: 80px;
+    height: 50px;
+    border: 1px solid #aaa;
+    padding-left: 15px;
+    outline: none;
+  }
+  .birthday-box > div > p {
+    font-size: 1rem; /*16px*/
+    font-weight: 400;
+    position: absolute;
+    top: 10px;
+    left: 85px;
+  }
+  .birthday-box > div > input::placeholder {
+    font-size: 1rem; /*16px*/
+    font-weight: 400;
+    color: #d3d3d3;
+  }
+  .male {
+    margin-top: 10px;
+  }
+  .male > button {
+    width: 163px;
+    height: 50px;
+    border: 1px solid #aaa;
+    box-sizing: border-box;
+    background-color: #eee;
+    color: #8d8d8d;
+    font-size: 1rem; /*16px*/
+    font-weight: 400;
+    line-height: 1.5rem;
+    cursor: pointer;
+  }
+
+  /* signup-bottom */
+  .signup-bottom {
+    width: 100%;
+    margin-top: 60px;
+    font-size: 1rem; /*16px*/
+    font-weight: 400;
+    padding: 0 10px;
+  }
+  .signup-bottom > div {
+    display: inline-block;
+  }
+  .checkbox1 > input {
+    float: left;
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+  }
+  .checkbox1 > p {
+    float: left;
+    margin-top: -3px;
+  }
+  .signup-bottom > div:nth-child(2) {
+    margin-top: 10px;
+  }
+  .signup-bottom > div:nth-child(3) {
+    margin-top: 10px;
+    color: #8d8d8d;
+  }
+  .signup-bottom > div:nth-child(4) {
+    margin-top: 40px;
+  }
+  .signup-bottom > div:nth-child(5) {
+    margin-top: 20px;
+    color: #8d8d8d;
+  }
+  .checkbox2 > div {
+    width: 100%;
+    display: inline-block;
+  }
+  .checkbox2 > div > input {
+    float: left;
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+  }
+  .checkbox2 > div > p {
+    float: left;
+    margin-top: -2px;
+  }
+  .checkbox2 > div > span {
+    float: right;
+    text-decoration: underline;
+    margin-top: -2px;
+    cursor: pointer;
+  }
+  .signup-bottom > div:nth-child(6) {
+    margin-top: 40px;
+  }
+  .signup-bottom > div:nth-child(6) > p:last-child {
+    color: #08c5d8;
+  }
+  .signup-bottom > div:nth-child(7) {
+    margin-top: 20px;
+    width: 100%;
+    color: #8d8d8d;
+  }
+  .checkbox3 > div {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+  .checkbox3 > div > input {
+    float: left;
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+  }
+  .checkbox3 > div > p {
+    float: left;
+    margin-top: -2px;
+  }
+  .signup-bottom > button {
+    margin-top: 90px;
+    width: 310px;
+    height: 80px;
+    border: none;
+    background-color: #1d2088;
+    color: #fff;
+    font-size: 1rem; /*16px*/
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  /* footer */
+  footer {
+    max-width: 1180px;
+    margin-top: -25px;
+  }
+  .footer-top {
+    width: 100%;
+    position: relative;
+    font-size: 0.813rem;
+  }
+  .footer-lang {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 250px;
+  }
+  .footer-ccm {
+    margin-top: -180px;
+    width: 100%;
+  }
+  .footer-logo {
+    margin-top: 200px;
+  }
+}

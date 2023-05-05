@@ -1,0 +1,788 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap");
+/* font-family: 'Nunito Sans', sans-serif; */
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 100;
+  src: url(../font/NotoSansKR-Thin.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 300;
+  src: url(../font/NotoSansKR-Light.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../font/NotoSansKR-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../font/NotoSansKR-Medium.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../font/NotoSansKR-Bold.woff) format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 900;
+  src: url(../font/NotoSansKR-Black.woff) format("woff");
+}
+@font-face {
+  font-family: "Arial Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Arial Bold"), url("../font/ARIALBD.TTF.woff") format("woff");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+  line-height: 0;
+}
+
+/* section common*/
+.blind {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -999rem;
+  overflow: hidden;
+}
+
+/* header */
+header {
+  width: 100%;
+  height: 170px;
+  background-color: #fff;
+  position: relative;
+}
+.top-nav {
+  width: 100%;
+  height: 50px;
+  background-color: #243c84;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* header 고정 */
+.top-fixed {
+  height: 120px;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #d9d9d9;
+  z-index: 1;
+}
+.top-fixed .top-nav {
+  display: none;
+}
+.top-fixed .top-logo {
+  top: 30px;
+}
+
+/* top-menu (tab) */
+.top-menu li {
+  float: left;
+  text-align: center;
+}
+.top-menu li a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #fff;
+  display: block;
+  padding: 17px 20px; /* 위,아래 20px->17px 'Noto Sans KR'만의 line-height값이 있기 때문에 (글씨의 자동 높이 때문에 높이만 2~3px줄이기) */
+  position: relative;
+}
+.top-menu li a::before {
+  content: "";
+  width: 1px;
+  height: 10px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: -2px;
+  transform: translateY(-50%);
+}
+.top-menu li.on {
+  background-color: #fff;
+  padding: 0 2px; /* ::before로 만든 선을 숨기기 위해서 */
+}
+.top-menu li.on a {
+  color: #243c84;
+}
+
+/* top-menu (sns, search) */
+.top-menu-right {
+  display: flex;
+}
+.top-sns {
+  display: flex;
+  margin-top: 14px;
+}
+.top-sns > li {
+  width: 22px;
+  height: 22px;
+  margin: 0 5px 0 0;
+}
+.top-sns > li:nth-child(1) {
+  background: url("https://www.ediya.com/images/common/top_sns01.png") no-repeat;
+  background-size: cover;
+}
+.top-sns > li:nth-child(2) {
+  background: url("https://www.ediya.com/images/common/top_sns02.png") no-repeat;
+  background-size: cover;
+}
+.top-sns > li:nth-child(3) {
+  background: url("https://www.ediya.com/images/common/top_sns03.png") no-repeat;
+  background-size: cover;
+}
+.top-sns > li:nth-child(4) {
+  background: url("https://www.ediya.com/images/common/top_sns04.png") no-repeat;
+  background-size: cover;
+}
+.top-search {
+  position: relative;
+  margin: 10px 30px 0 15px; /* 15px+.top-sns>li 5px=20px */
+}
+.top-search input {
+  width: 162px;
+  height: 30px;
+}
+.top-search span {
+  background: url("https://www.ediya.com/images/common/icon_search.gif")
+    no-repeat;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 12px;
+  top: 7px;
+  cursor: pointer;
+}
+
+/* top-logo */
+.top-logo {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.top-logo img {
+  width: auto;
+  height: 20px;
+}
+
+/* gnb */
+.gnb-nav {
+  width: 100%;
+  position: relative;
+  z-index: 999;
+}
+.gnb-nav::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0;
+  background-color: #fff;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  z-index: -1;
+  transition: 0.3s;
+  opacity: 0;
+}
+.gnb-nav:hover::after {
+  height: 230px;
+  opacity: 1;
+  border-bottom: 2px solid #555;
+}
+.gnb-main {
+  position: absolute;
+  top: 80px;
+  left: 50%; /* 중앙 정렬(유동적) */
+  margin-left: -520px; /* li전체 사이즈의 반(고정값) */
+}
+.gnb-main > li {
+  float: left;
+}
+.gnb-main > li > a {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  display: block;
+  color: #202023;
+  padding: 0 44px;
+}
+.gnb-main > li > a > span::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 4px;
+  background-color: #000;
+  margin: 3px auto; /* auto: before, after 따로 사용하지 않아도 중심에서부터 시작할 수 있도록(기본값은 왼쪽에서부터 시작) */
+  transition: 0.2s;
+}
+.gnb-main > li:hover a > span::after {
+  width: 100%;
+}
+.gnb-sub {
+  padding-left: 40px;
+  margin-top: 20px;
+  opacity: 0;
+  display: none;
+  transition: 0.2s;
+}
+.gnb-nav:hover .gnb-sub {
+  opacity: 1;
+  display: block;
+}
+.gnb-sub > li > a {
+  font-size: 0.813rem; /*13px*/
+  color: #848484;
+  line-height: 1.875rem;
+}
+.gnb-sub > li > a:hover {
+  color: #000;
+}
+
+/* side-menu */
+.nav-btn {
+  display: none;
+}
+
+/* section1 */
+section {
+  width: 100%;
+  margin: 0 auto;
+  padding: 150px 60px 250px 60px;
+}
+.section1 {
+  width: 810px;
+  margin: 0 auto;
+}
+.login-top > ul > li {
+  display: inline-block;
+  margin-right: 72px;
+}
+.login-top > ul > li:first-child {
+  font-size: 3.625rem; /*43pt-58px*/
+  font-family: "Arial Bold";
+}
+.login-top > ul > li:nth-child(2) {
+  font-size: 1.25rem; /*15pt-20px*/
+  font-weight: 700;
+  color: #1d2088;
+  position: relative;
+  cursor: pointer;
+}
+.login-top > ul > li:nth-child(3) {
+  font-size: 1.25rem; /*15pt-20px*/
+  font-weight: 700;
+  cursor: pointer;
+}
+.login-top > ul > li:nth-child(2) > span::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #1d2088;
+  position: absolute;
+  top: 40%;
+}
+.login-top > ul > li:nth-child(2) > span {
+  margin-right: 17px;
+}
+.login-middle {
+  margin-top: 40px;
+  float: left;
+}
+.login-middle > form > div {
+  text-align: left;
+  color: #8d8d8d;
+  font-size: 1rem; /*12pt-16px*/
+  font-weight: 700;
+}
+.login-middle > form > div {
+  margin-top: 30px;
+}
+.login-middle > form > div > input {
+  width: 700px;
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #8d8d8d;
+  outline: none;
+  margin-top: 2px;
+}
+.login-middle > form > div:last-child > input {
+  width: 22px;
+  height: 22px;
+  border: 1px solid #8d8d8d;
+  float: left;
+  margin-right: 15px;
+}
+.login-bottom {
+  text-align: center;
+}
+.login-btn > button {
+  margin-top: 60px;
+  width: 360px;
+  height: 80px;
+  border: none;
+  background-color: #1d2088;
+  color: #fff;
+  font-size: 1.125rem; /*13pt-18px*/
+  font-weight: 700;
+  cursor: pointer;
+}
+.login-btn > button:hover {
+  background-color: #161861;
+}
+.login-btn > div {
+  margin-top: 22px;
+  position: relative;
+}
+.login-btn > div > p {
+  display: inline;
+  color: #8d8d8d;
+  font-size: 1rem; /*12pt-16px*/
+  font-weight: 700;
+  cursor: pointer;
+}
+.login-btn > div > p:first-child {
+  margin-right: 90px;
+}
+.login-btn > div > p:first-child::after {
+  content: "";
+  width: 1px;
+  height: 20px;
+  background-color: #8d8d8d;
+  position: absolute;
+  top: 3px;
+  left: 340px;
+}
+.login-btn > div > p:hover {
+  color: #464646;
+}
+.signup-btn > button {
+  margin-top: 50px;
+  width: 360px;
+  height: 80px;
+  border: 1px solid #626262;
+  background-color: #fff;
+  font-size: 1.125rem; /*13pt-18px*/
+  font-weight: 700;
+  cursor: pointer;
+}
+.naver-btn > button {
+  margin-top: 28px;
+  width: 360px;
+  height: 80px;
+  border: 1px solid #8d8d8d;
+  background-color: #fff;
+  padding: 22px;
+  position: relative;
+  cursor: pointer;
+}
+.naver-btn > button::after {
+  content: "";
+  width: 1px;
+  height: 79px;
+  background-color: #8d8d8d;
+  position: absolute;
+  top: 0;
+  left: 80px;
+}
+.naver-btn > button > img {
+  float: left;
+  width: 35px;
+  height: 37px;
+}
+.naver-btn > button > span {
+  display: inline-block;
+  font-size: 1.125rem; /*13pt-18px*/
+  font-weight: 700;
+  color: #8d8d8d;
+  margin-top: 5px;
+  margin-left: 30px;
+}
+.naver-btn > button:hover > span {
+  color: #464646;
+}
+.kakao-btn > button {
+  margin-top: 15px;
+  width: 360px;
+  height: 80px;
+  border: 1px solid #8d8d8d;
+  background-color: #fff;
+  padding: 22px;
+  position: relative;
+  cursor: pointer;
+}
+.kakao-btn > button::after {
+  content: "";
+  width: 1px;
+  height: 79px;
+  background-color: #8d8d8d;
+  position: absolute;
+  top: 0;
+  left: 80px;
+}
+.kakao-btn > button > img {
+  float: left;
+  width: 48px;
+  height: 44px;
+  margin-top: -3px;
+  margin-left: -5px;
+}
+.kakao-btn > button > span {
+  display: inline-block;
+  font-size: 1.125rem; /*13pt-18px*/
+  font-weight: 700;
+  color: #8d8d8d;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+.kakao-btn > button:hover > span {
+  color: #464646;
+}
+
+/* footer */
+footer {
+  width: 100%;
+  background-color: #262626;
+  text-align: center;
+}
+footer > div {
+  border-bottom: 1px solid #464646;
+}
+
+/* footer top */
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+  position: relative;
+}
+.footer-top > ul > li {
+  display: inline-block;
+  margin: 3px 19px;
+  font-size: 0.813rem; /*13px*/
+  color: #818181;
+}
+.footer-top > ul > li:nth-child(2) a {
+  color: #fff;
+  font-weight: 400;
+}
+.footer-lang {
+  float: right;
+  margin-top: -25px;
+  background-color: #fff;
+}
+.footer-lang > select {
+  width: 168px;
+  height: 28px;
+  line-height: 28px;
+  appearance: none;
+  background: url("../img/language_arrow.gif") no-repeat 135px 10px;
+  padding-left: 20px;
+  font-size: 0.813rem; /*13px*/
+  color: #848484;
+  border: 1px solid #d9d9d9;
+  text-align: left;
+}
+
+/* footer bottom */
+.footer-bottom {
+  max-width: 1200px;
+  position: relative;
+  margin: 0 auto;
+}
+.footer-logo {
+  margin: 41px 0 24px;
+}
+.footer-info {
+  width: 90%;
+  max-width: 650px;
+  margin: 0 auto;
+  margin-bottom: 14px;
+  font-size: 0.75rem; /*12px*/
+  line-height: 1.3rem;
+  color: #6c6c6c;
+}
+.footer-info > span {
+  background: url("https://www.ediya.com/images/common/footer_line.gif")
+    no-repeat;
+  background-position: right;
+  margin-right: 10px;
+  padding-right: 10px;
+}
+.footer-copy {
+  padding-bottom: 35px;
+  font-size: 0.75rem;
+  color: #6c6c6c;
+}
+.footer-ccm {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* tablet */
+@media screen and (max-width: 1180px) and (min-width: 641px) {
+  /* top-menu */
+  .top-nav {
+    height: 30px;
+  }
+  .top-menu-right {
+    display: none;
+  }
+  .top-menu {
+    width: 100%;
+  }
+  .top-menu li {
+    width: 33.33333%;
+  }
+  .top-menu li a {
+    padding: 7px 0;
+  }
+  header {
+    height: 90px;
+  }
+  .top-logo {
+    top: 50px;
+    left: 10px;
+    transform: translateX(0);
+  }
+  .gnb-nav {
+    display: none;
+  }
+  .nav-btn {
+    display: block;
+    position: relative;
+  }
+  .nav-btn > span {
+    background: url("https://www.ediya.com/images/common/m_nav_btn.gif");
+    width: 26px;
+    height: 22px;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    cursor: pointer;
+  }
+  .top-fixed {
+    height: 60px;
+  }
+  .top-fixed .top-logo {
+    top: 20px;
+  }
+
+  /* footer */
+  footer {
+    max-width: 1180px;
+  }
+  .footer-top {
+    width: 100%;
+    position: relative;
+  }
+  .footer-lang {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 240px;
+  }
+  .footer-ccm {
+    margin-top: -190px;
+    width: 100%;
+  }
+  .footer-logo {
+    margin-top: 210px;
+  }
+  .footer-info {
+    margin-top: -10px;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 640px) and (min-width: 360px) {
+  /* top-menu */
+  .top-nav {
+    height: 30px;
+  }
+  .top-menu-right {
+    display: none;
+  }
+  .top-menu {
+    width: 100%;
+  }
+  .top-menu li {
+    width: 33.33333%;
+  }
+  .top-menu li a {
+    padding: 7px 0;
+  }
+  header {
+    height: 90px;
+  }
+  .top-logo {
+    top: 50px;
+    left: 10px;
+    transform: translateX(0);
+  }
+  .gnb-nav {
+    display: none;
+  }
+  .nav-btn {
+    display: block;
+    position: relative;
+  }
+  .nav-btn > span {
+    background: url("https://www.ediya.com/images/common/m_nav_btn.gif");
+    width: 26px;
+    height: 22px;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    cursor: pointer;
+  }
+  .top-fixed {
+    height: 60px;
+  }
+  .top-fixed .top-logo {
+    top: 20px;
+  }
+
+  /* section1 */
+  section {
+    padding: 150px 10px 250px 10px;
+  }
+  .section1 {
+    width: 360px;
+    margin: 0 auto;
+  }
+  .login-top > ul > li {
+    display: inline-block;
+    margin-right: 35px;
+  }
+  .login-top > ul > li:first-child {
+    margin-right: 150px;
+    margin-bottom: 30px;
+  }
+  .login-top > ul > li:last-child {
+    margin-right: 0px;
+  }
+  .login-middle > form > div > input {
+    width: 320px;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #8d8d8d;
+    outline: none;
+    margin-top: 2px;
+  }
+  .login-bottom {
+    width: 320px;
+  }
+  .login-btn > button {
+    margin-top: 60px;
+    width: 320px;
+    height: 80px;
+    border: none;
+    background-color: #1d2088;
+    color: #fff;
+    font-size: 1.125rem; /*13pt-18px*/
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .login-btn > button:hover {
+    background-color: #161861;
+  }
+  .login-btn > div {
+    margin-top: 22px;
+    position: relative;
+  }
+  .login-btn > div > p {
+    display: inline;
+    color: #8d8d8d;
+    font-size: 1rem; /*12pt-16px*/
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .login-btn > div > p:first-child {
+    margin-right: 90px;
+  }
+  .login-btn > div > p:first-child::after {
+    content: "";
+    width: 1px;
+    height: 20px;
+    background-color: #8d8d8d;
+    position: absolute;
+    top: 3px;
+    left: 155px;
+  }
+  .signup-btn > button {
+    width: 320px;
+  }
+  .naver-btn > button {
+    margin-top: 28px;
+    width: 320px;
+    height: 80px;
+    border: 1px solid #8d8d8d;
+    background-color: #fff;
+    padding: 22px;
+    position: relative;
+    cursor: pointer;
+  }
+  .kakao-btn > button {
+    width: 320px;
+  }
+
+  /* footer */
+  footer {
+    max-width: 1180px;
+    margin-top: -25px;
+  }
+  .footer-top {
+    width: 100%;
+    position: relative;
+    font-size: 0.813rem;
+  }
+  .footer-lang {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 260px;
+  }
+  .footer-ccm {
+    margin-top: -180px;
+    width: 100%;
+  }
+  .footer-logo {
+    margin-top: 200px;
+  }
+}
